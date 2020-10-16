@@ -454,7 +454,7 @@ export class MapfileStyleParser implements StyleParser {
   getTextSymbolizerFromMapfileStyle(styleParameters: any): TextSymbolizer {
     const textSymbolizer: TextSymbolizer = { kind: 'Text' } as TextSymbolizer;
 
-    const label = styleParameters.text ? styleParameters.text : styleParameters.character;
+    const label = styleParameters.text ? styleParameters.text : styleParameters.symbol.character;
     if (label) {
       textSymbolizer.label = label.replace('[', '{{').replace(']', '}}');
     }
@@ -487,9 +487,10 @@ export class MapfileStyleParser implements StyleParser {
       textSymbolizer.anchor = anchorpointMap[styleParameters.position.toLowerCase()];
     }
 
-    if (styleParameters.font) {
+    const font = styleParameters.font ? styleParameters.font : styleParameters.symbol.font;
+    if (font) {
       // TODO: map fonts from FONTSET
-      textSymbolizer.font = [styleParameters.font];
+      textSymbolizer.font = [font];
     }
 
     if (styleParameters.size) {
@@ -513,7 +514,7 @@ export class MapfileStyleParser implements StyleParser {
 
     if (typeof mapfileStyle.symbol === 'object') {
       const symbolType = mapfileStyle.symbol.type;
-      switch (symbolType) {
+      switch (symbolType.toLowerCase()) {
       case 'ellipse':
       case 'vector':
         pointSymbolizer = this.getMarkSymbolizerFromMapfileStyle(mapfileStyle);
