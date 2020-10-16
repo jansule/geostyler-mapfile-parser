@@ -8,6 +8,7 @@ const pointStyle: Style = {
     symbolizers: [{
       kind: 'Mark',
       wellKnownName: 'Circle',
+      fillOpacity: 1,
       color: '#00FF00',
       radius: 7.5
     }],
@@ -20,6 +21,7 @@ const pointStyle: Style = {
     symbolizers: [{
       kind: 'Mark',
       wellKnownName: 'Triangle',
+      fillOpacity: 0,
       color: '#FF0000',
       radius: 5
     }],
@@ -32,6 +34,7 @@ const pointStyle: Style = {
     symbolizers: [{
       kind: 'Mark',
       wellKnownName: 'Square',
+      fillOpacity: 0,
       color: '#00FFFF',
       radius: 5
     }],
@@ -44,6 +47,7 @@ const pointStyle: Style = {
     symbolizers: [{
       kind: 'Mark',
       wellKnownName: 'Cross',
+      fillOpacity: 0,
       color: '#0000FF',
       radius: 5
     }],
